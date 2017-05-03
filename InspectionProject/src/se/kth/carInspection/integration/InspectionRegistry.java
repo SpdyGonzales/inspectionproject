@@ -13,7 +13,7 @@ public class InspectionRegistry {
     private final HashMap<String, InspectionStep[]> data = new HashMap<>();
     
     /**
-     * Creates a InspectionRegistry
+     * Creates a InspectionRegistry for the specific license number
      * 
      * @param license number to store results for
      */
@@ -22,19 +22,28 @@ public class InspectionRegistry {
         this.insertRandomData();
     }
     
+    // returns an array of inspection results
+    
     public InspectionStep [] loadStepResults () {
         this.fetch();
         return this.storedSteps;
     }
+    
+    // saves the steps in parameter to private array storedSteps
     
     public void saveStepResults (InspectionStep[] steps){
     	this.storedSteps = steps;
     	this.store();
     }
     
+    // gets values from list of random data (database) license number tells which to get from
+    // thanks to hash map
+    
     private void fetch () {
     	this.storedSteps = data.get(this.licenseNumber);
     }
+    
+    // sets new values to the array of random data (database)
     
     private void store () {
     	data.put(this.licenseNumber, this.storedSteps);

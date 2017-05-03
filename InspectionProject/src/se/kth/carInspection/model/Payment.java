@@ -16,11 +16,13 @@ public class Payment {
 	}
 	
 	/**
-	 * calculate cost
+	 * calculate cost, using the method in inspection.
 	 */
 	public float calculateCost() {
 		return this.inspection.getInspectionsNeeded() * 100;
 	}
+	
+	// getting confirmation on card from Payment Authorization and printing receipt
 	
 	public void paymentAuthAndPrint(CreditCard card) {
 		PaymentAuthorization paymentAuth = new PaymentAuthorization();

@@ -32,6 +32,11 @@ public class View {
 		
 		InspectionStepArea instruction;
 		
+		/**
+		 * getArea is called to show details of area on car
+		 * performInspection is called til it returns null 
+		 */
+		
 		while((instruction = controller.performInspection()) != null) {
 			System.out.println("controller is called with methods performInspection");
 			System.out.println(instruction.getArea() + "\n");
@@ -39,6 +44,11 @@ public class View {
 			System.out.println("result is always true but called anyway");
 			controller.enterResult(true);
 		}
+		
+		System.out.println("Thank you. Press Enter to END inspection");
+		in.nextLine();
+		controller.inspectionDone();
+		
 	
 	}
 
