@@ -4,7 +4,7 @@ import se.kth.carInspection.integration.InspectionRegistry;
 
 public class Inspection {
 	private InspectionRegistry inspectionList;
-	private InspectionStep [] inspectionSteps = new InspectionStep[0];
+	private InspectionStep [] inspectionSteps;// = new InspectionStep[0];
 	private int currentStep = 0;
 	
 	// starts with creating a inspection registry and fetches a list of inspections
