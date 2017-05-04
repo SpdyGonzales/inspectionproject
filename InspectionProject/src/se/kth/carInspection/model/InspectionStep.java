@@ -4,7 +4,7 @@ public class InspectionStep {
 	private final InspectionStepArea area;
 	private InspectionStepResult result;
 	
-	// stores result for each step
+	// stores inspection details for the current step
 	
 	public InspectionStep(InspectionStepArea stepArea) {
 		this.area = stepArea;

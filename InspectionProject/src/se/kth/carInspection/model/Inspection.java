@@ -1,6 +1,7 @@
 package se.kth.carInspection.model;
 
 import se.kth.carInspection.integration.InspectionRegistry;
+import se.kth.carInspection.integration.Printer;
 
 public class Inspection {
 	private InspectionRegistry inspectionList;
@@ -53,5 +54,11 @@ public class Inspection {
 	
 	public void endInspection() {
 		this.inspectionList.saveStepResults(inspectionSteps);
+		
+	}
+	public void makeInspectionReportandPrint(){
+		 InspectionReport report = new InspectionReport(inspectionSteps);
+		 Printer printer = new Printer();
+		 printer.print(report);
 	}
 }

@@ -41,7 +41,7 @@ public class Controller {
 		this.payment.paymentAuthAndPrint(card);
 	}
 	
-	// specifies details of next inspection
+	// sends it forward and return type area specifies details of next inspection
 	
 	public InspectionStepArea performInspection() {
 		return inspection.getNextStep();
@@ -55,6 +55,7 @@ public class Controller {
 	
 	public void inspectionDone() {
 		inspection.endInspection();
+		inspection.makeInspectionReportandPrint();
 		
 	}
 }
