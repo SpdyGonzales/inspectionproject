@@ -27,6 +27,8 @@ public class Controller {
 	
 	// license number is entered. returns total cost of inspection
 	// inspection details are fetched in registry
+	// @param String licenseNumber
+	// @return float cost
 	
 	public float enterLicenseNumber (String licenseNumber) {
 		this.inspection.setInspectionRegistry(CarRegistry.getResultList(licenseNumber));
@@ -36,6 +38,7 @@ public class Controller {
 	}
 	
 	// credit card has been created and passed to payment
+	// @param CreditCard card
 	
 	public void cardPayment(CreditCard card){
 		this.payment.paymentAuthAndPrint(card);
@@ -48,10 +51,13 @@ public class Controller {
 	}
 	
 	// enters result of the current inspection. now it's always pass.
+	// @param boolean passed
 	
 	public void enterResult(boolean passed) {
 		inspection.setLastStepResult(new InspectionStepResult(passed));
 	}
+	
+	// endInspection is called and method to send report to printer
 	
 	public void inspectionDone() {
 		inspection.endInspection();

@@ -23,6 +23,7 @@ public class InspectionRegistry {
     }
     
     // returns an array of inspection results
+    // @return InspectionStep[]
     
     public InspectionStep [] loadStepResults () {
         this.fetch();
@@ -30,6 +31,7 @@ public class InspectionRegistry {
     }
     
     // saves the steps in parameter to private array storedSteps
+    // @param InspectionStep[] steps
     
     public void saveStepResults (InspectionStep[] steps){
     	this.storedSteps = steps;
@@ -49,6 +51,7 @@ public class InspectionRegistry {
     	data.put(this.licenseNumber, this.storedSteps);
     }
    
+    //array of random data. new InspectionStep that can later be accessed
     
     private void insertRandomData () {
         InspectionStep[] steps1 = new InspectionStep[3];

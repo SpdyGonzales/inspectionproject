@@ -9,10 +9,6 @@ import se.kth.iv1350.payauth.CreditCard;
 
 public class View {
 	
-	public static void main(String[] args) {
-		new View(new Controller());
-	}
-	
 	Scanner in = new Scanner(System.in);
 	
 	public View(Controller controller) {

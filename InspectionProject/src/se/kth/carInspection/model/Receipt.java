@@ -4,7 +4,8 @@ public class Receipt {
 	public boolean status;
 	public int cost;
 	
-	//creates receipt
+	// creates receipt
+	// @param boolean status, int cost
 	
 	public Receipt(boolean status, int cost) {
 		this.status = status;
