@@ -24,7 +24,9 @@ public class PaymentTest extends TestCase {
 	protected void tearDown() throws Exception {
 		// Tear down
 	}
-	
+	/**
+	 * test if the calculated cost method is correct and is equal to the expected cost of a full inspection
+	 */
 	@Test
 	public void testCalculateCost() {
 		System.out.println("calculateCost");
@@ -33,7 +35,9 @@ public class PaymentTest extends TestCase {
 		assertEquals(payment.calculateCost(), this.totalPriceGuess, 0);
 		
 	}
-	
+	/**
+	 * test if the Payment Authorization is correctly implemented. Expected to always return true
+	 */
 	@Test	
 	public void testPayAuthAndPrint() {
 		System.out.println("payAuthAndPrint");

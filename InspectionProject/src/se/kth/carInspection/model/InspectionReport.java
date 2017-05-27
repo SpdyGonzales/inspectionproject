@@ -1,7 +1,10 @@
 package se.kth.carInspection.model;
 
-// gathers Inspection details with the array of inspection steps. saves each step as a variable
-// that can later be used to getArea and getResult for each step.
+/**
+ *  gathers Inspection details with the array of inspection steps. saves each step as a variable
+ *  that can later be used to getArea and getResult for each step.
+ *
+ */
 
 public class InspectionReport {
 	public InspectionStepArea detail1;

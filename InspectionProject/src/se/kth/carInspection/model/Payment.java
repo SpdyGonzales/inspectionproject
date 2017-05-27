@@ -23,10 +23,12 @@ public class Payment {
 		return this.inspection.getInspectionsNeeded() * 100;
 	}
 	
-	// getting confirmation on card from Payment Authorization and printing receipt.
-	// creating new receipt and new printer to print receipt. receipt takes two parameter, one to see if it's valid and the other
-	// to calculate cost.
-	// @param CreditCard card
+	/**
+	 *  getting confirmation on card from Payment Authorization and printing receipt.
+	 *  creating new receipt and new printer to print receipt. receipt takes two parameter, one to see if it's valid and the other
+	 *  to calculate cost.
+	 * @param CreditCard card
+	 */
 	
 	public void paymentAuthAndPrint(CreditCard card) {
 		PaymentAuthorization paymentAuth = new PaymentAuthorization();

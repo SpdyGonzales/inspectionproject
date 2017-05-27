@@ -8,9 +8,11 @@ public class Printer {
 	public Printer() {
 	}
 	
-	// prints out receipt. different if payment was approved or not (receipt.status = true or not)
-	// in this scenario it always will
-	// @param receipt
+	/**
+	 *  prints out receipt. different if payment was approved or not (receipt.status = true or not)
+	 *  in this scenario it always will
+	 * @param receipt
+	 */
 	
 	public void print (Receipt receipt){
 		if(receipt.status){
@@ -19,9 +21,11 @@ public class Printer {
 			System.out.println("Receipt: Purchase was not approved");
 		}
 	}
-	// inspection report takes the variable detail and result which class carInspectionArea/result
-	// calls method to print it out 
-	// @param report
+	/**
+	 *  inspection report takes the variable detail and result which class carInspectionArea/result
+	 *  calls method to print it out
+	 * @param report
+	 */
 	
 	public void print (InspectionReport report){
 		
