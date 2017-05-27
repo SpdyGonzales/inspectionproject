@@ -13,16 +13,13 @@ import se.kth.iv1350.garage.Garage;
 
 public class ControllerTest extends TestCase {
 	
-	private Inspection inspection;
-	private InspectionStepArea area;
-	private String currentArea;
+	private Controller controller;
+	
 
 	@Override
 	protected void setUp() throws Exception {
 		
-		String licenseNumberTest = "APK420";
-		this.inspection = new Inspection();
-		this.inspection.setInspectionRegistry(CarRegistry.getResultList(licenseNumberTest));
+		this.controller = new Controller();
 		
 	}
 	
@@ -30,17 +27,22 @@ public class ControllerTest extends TestCase {
 	protected void tearDown() throws Exception {
 		// Tear down
 	}
+	
+	@Test(expected=NullPointerException.class)
+	public void testInvalidLincense () {
+		
+		this.controller.newInspection();
+		float cost = this.controller.enterLicenseNumber("foo");
+		assertEquals(216, cost, 0);
+		
+	}
+	
 	@Test
-	public void testPerformInspection () {
-		
-		this.area = inspection.getNextStep();
-		this.currentArea = this.area.getArea();
-		
-		assertEquals(this.currentArea,"Däck");
-		
-		
-		
-		
+	public void performInspectionTest(){
+		this.controller.newInspection();
+		float cost = this.controller.enterLicenseNumber("APK420");
+		InspectionStepArea areaInspec = this.controller.performInspection();
+		assertEquals("Däck", areaInspec.getArea());
 	}
 
 }
