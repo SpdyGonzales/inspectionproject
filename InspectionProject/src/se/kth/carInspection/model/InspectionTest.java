@@ -16,9 +16,6 @@ public class InspectionTest extends TestCase {
 	
 	@Override
 	protected void setUp() throws Exception {
-		
-		
-		
 	}
 	
 	private void createInspection (String licenseNumber){
@@ -28,21 +25,11 @@ public class InspectionTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		// Tear down
-	}
-	
-	@Test
-	public void setInspectionRegistryTest(){
-		Inspection inspection = new Inspection();
-		InspectionRegistry reg = CarRegistry.getResultList(licNumTest);
-		
-		float inspectionsBeforeLoading = inspection.getInspectionsNeeded();
-		inspection.setInspectionRegistry(reg);
-		assertNotSame(inspectionsBeforeLoading, inspection.getInspectionsNeeded());
-	}
-	
+	}	
 
 	@Test
 	public void testGetNextStep(){
+		System.out.println("getNextStep");
 		this.createInspection(licNumTest);
 		InspectionStepArea expectedOne = new InspectionStepArea("Däck");
 		InspectionStepArea expectedTwo = new InspectionStepArea("Ljus");
@@ -58,7 +45,36 @@ public class InspectionTest extends TestCase {
 	
 		
 	}
-
 	
+	public void testSetLastStepResult(){
+		System.out.println("setLastStepResult");
+		this.createInspection(licNumTest);
+		int stepsLeftAtFirst = this.inspection.getInspectionsNeeded();
+		this.inspection.getNextStep();
+		this.inspection.setLastStepResult(new InspectionStepResult(true));
+		int stepsLeft = this.inspection.getInspectionsNeeded();
+		
+		assertNotSame(stepsLeftAtFirst, stepsLeft);
+	}
+
+	public void testEndInspection(){
+		System.out.println("EndInspection");
+		Inspection inspection = new Inspection();
+        InspectionRegistry storage = CarRegistry.getResultList(licNumTest);
+        
+        inspection.setInspectionRegistry(storage);
+        
+        inspection.getNextStep();
+        inspection.setLastStepResult(new InspectionStepResult(true));
+        inspection.getNextStep();
+        inspection.setLastStepResult(new InspectionStepResult(false));
+        inspection.endInspection();
+        
+        InspectionStepResult step1Results = storage.loadStepResults()[0].getResult();
+        InspectionStepResult step2Results = storage.loadStepResults()[2].getResult();
+        
+        assertEquals(step1Results.getPassed(), true);
+        assertEquals(step2Results.getPassed(), false);
+	}
 
 }
