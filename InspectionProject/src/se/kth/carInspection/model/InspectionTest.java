@@ -26,6 +26,10 @@ public class InspectionTest extends TestCase {
 	protected void tearDown() throws Exception {
 		// Tear down
 	}	
+	
+	/**
+	 * test if the right area is displayed when you call nextStep
+	 */
 
 	@Test
 	public void testGetNextStep(){
@@ -45,7 +49,10 @@ public class InspectionTest extends TestCase {
 	
 		
 	}
-	
+	/**
+	 * testing if setLastStep changes state of inspectionsNeeded
+	 */
+	@Test
 	public void testSetLastStepResult(){
 		System.out.println("setLastStepResult");
 		this.createInspection(licNumTest);
@@ -56,7 +63,11 @@ public class InspectionTest extends TestCase {
 		
 		assertNotSame(stepsLeftAtFirst, stepsLeft);
 	}
-
+	
+	/**
+	 * testing if the saved results are the one retrieved by getter when ending inspection
+	 */
+	@Test
 	public void testEndInspection(){
 		System.out.println("EndInspection");
 		Inspection inspection = new Inspection();
@@ -76,5 +87,22 @@ public class InspectionTest extends TestCase {
         assertEquals(step1Results.getPassed(), true);
         assertEquals(step2Results.getPassed(), false);
 	}
+	
+	/**
+	 * Testing if the report writes the right areas before printing. with report as parameter
+	 */
+	@Test
+	public void testMakeReportAndPrint(){
+		
+		InspectionStep [] inspectionSteps;// = new InspectionStep[0];
+		Inspection inspection = new Inspection();
+        InspectionRegistry storage = CarRegistry.getResultList(licNumTest);
+        inspection.setInspectionRegistry(storage);
+		inspectionSteps = storage.loadStepResults();
+		
+		InspectionReport report = new InspectionReport(inspectionSteps);
+		assertEquals(report.detail1.getArea(),"Däck");
+	}
+	
 
 }
